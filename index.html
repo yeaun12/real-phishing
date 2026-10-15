@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f4efe8">
+  <meta name="description" content="문자 속 링크 대신 공식 경로에서 확인하는 방법을 안내하는 개인정보 보호 중심 도구입니다.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>진짜예요? — 이 문자, 진짜인지 확인하기</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 이동</a>
+
+  <div class="app">
+    <!-- 왼쪽 메뉴 (데스크톱) -->
+    <aside class="sidebar" aria-label="사이드 메뉴">
+      <a class="brand" href="#main" aria-label="진짜예요? 홈">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#FF7A50"/><text x="20" y="31" text-anchor="middle" font-family="Apple SD Gothic Neo, Pretendard, Noto Sans KR, Malgun Gothic, sans-serif" font-size="30" font-weight="900" fill="#FFFFFF">?</text></svg><span class="brand-name"><span class="wm-jinjja">진짜<span class="wm-q" aria-hidden="true">?</span></span>예요<span class="brand-q">?</span></span><span class="beta">BETA</span>
+      </a>
+      <p class="brand-description">이 문자, 진짜인지 확인하기</p>
+      <nav class="side-nav" aria-label="주요 메뉴">
+        <a href="#check" class="nav-current" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>문자 확인</a>
+        <a href="#examples">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M9 11h6M9 15h4"/></svg>사례와 근거</a>
+        <a href="#about">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>이 도구에 관해</a>
+      </nav>
+      <div class="privacy-box">
+        <span class="privacy-title"><span class="lock-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>문자 내용은 이 기기 안에서</span>
+        <span class="privacy-text">입력한 문자를 서버로 전송하거나 자동 저장하지 않아요.</span>
+        <button class="link-quiet" type="button" id="reset-top">내용 지우고 처음으로 ↺</button>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <a class="brand brand-mobile" href="#main" aria-label="진짜예요? 홈">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#FF7A50"/><text x="20" y="31" text-anchor="middle" font-family="Apple SD Gothic Neo, Pretendard, Noto Sans KR, Malgun Gothic, sans-serif" font-size="30" font-weight="900" fill="#FFFFFF">?</text></svg><span class="brand-name"><span class="wm-jinjja">진짜<span class="wm-q" aria-hidden="true">?</span></span>예요<span class="brand-q">?</span></span><span class="beta">BETA</span>
+        </a>
+        <div class="greeting">
+          <span class="greeting-kicker">불안한 문자 앞에서, 한 번 멈춤</span>
+          <span class="greeting-title">오늘 받은 문자, 같이 볼까요?</span>
+        </div>
+        <div class="topbar-actions"><button class="text-size-button" id="text-size" type="button" aria-pressed="false" aria-label="글자 크게 보기"><span aria-hidden="true"><span class="ts-a">가</span><small>/</small><b>가+</b></span></button>
+        <button class="sos-button" id="open-help" type="button"><span class="sos-dot" aria-hidden="true"></span><span class="sos-long">이미 누르거나 보냈나요?</span><span class="sos-short">이미 눌렀어요</span></button></div>
+      </header>
+
+      <main id="main" class="content">
+        <div class="col-main">
+          <section class="tool-card" id="check" aria-labelledby="hero-heading">
+            <div class="progress" id="tool-card">
+              <div class="progress-bars" role="img" id="progress-bars" aria-label="1단계 / 3단계"><span class="bar active"></span><span class="bar"></span><span class="bar"></span></div>
+              <span class="progress-text" id="progress-text">1 / 3 · 문자 넣기</span>
+            </div>
+
+            <!-- 1단계 -->
+            <section id="step-one" class="tool-step">
+              <div class="paper-band">
+                <span class="paper-label">10번 논문을 바탕으로 만든 앱</span>
+                <p class="paper-title">「피싱 URL 탐지에서 도메인 중복과 scheme·www 단서의 평가 영향」 <span>이예은 · 2026</span></p>
+                <p class="help-sentence"><b>이 앱은</b> <strong class="who"><span class="tag-mini">누가</span>수상한 문자를 받은 사람</strong>이 링크를 누르기 전에, <strong class="how"><span class="tag-mini">어떻게</span>주소의 겉모양(https·www) 대신 공식 경로에서 직접 확인하도록</strong> 돕습니다.</p>
+              </div>
+              <h1 id="hero-heading" tabindex="-1">문자 속 링크 대신,<br><em>공식 경로</em>로 확인해요</h1>
+              <ol class="todo-three" aria-label="할 일 세 가지">
+                <li><b>1</b>받은 문자 붙여넣기</li>
+                <li><b>2</b>상황 고르고 주소 겉모양 점검</li>
+                <li><b>3</b>공식 경로에서 확인하고 기록</li>
+              </ol>
+              <div class="composer">
+                <div class="label-row"><label for="message">어떤 문자를 받았나요?</label></div>
+                <textarea id="message" maxlength="5000" rows="6" autocomplete="off" spellcheck="false" placeholder="받은 문자를 여기에 붙여넣으세요.&#10;비밀번호와 인증번호는 입력하지 마세요."></textarea>
+                <div class="composer-tools">
+                  <button type="button" class="pill-button raised" id="paste-message">붙여넣기</button>
+                  <button type="button" class="pill-button" id="clear-message">입력 지우기</button>
+                  <span class="counter" id="char-count">0 / 5,000</span>
+                </div>
+              </div>
+              <p class="hint with-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/></svg>링크를 열지 않고 글자만 읽어요. 비밀번호·인증번호는 넣지 마세요.</p>
+              <button class="primary-button" id="analyze" type="button">확인할 경로 찾기 <span aria-hidden="true">→</span></button>
+
+              <div class="sub-heading"><h2>문자 없이 상황으로 시작하기</h2><span>하나만 골라 주세요</span></div>
+              <div class="tile-grid" id="category-quick"></div>
+            </section>
+
+            <!-- 2단계 -->
+            <section id="step-two" class="tool-step" hidden aria-labelledby="step-two-heading">
+              <button class="back-button" id="back-one" type="button">← 문자 수정</button>
+              <h2 id="step-two-heading" class="step-title" tabindex="-1">이 문자를 살펴봤어요</h2>
+              <section class="verdict" id="verdict" aria-labelledby="verdict-title" aria-live="polite">
+                <div class="verdict-head"><span class="verdict-flag" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span><div><p class="verdict-level" id="verdict-level"></p><h3 class="verdict-title" id="verdict-title"></h3></div></div>
+                <ul class="verdict-list" id="verdict-list"></ul>
+                <p class="verdict-note" id="verdict-note"></p>
+                <p class="verdict-foot">위험 신호는 문자 속 단어와 주소 모양으로 찾은 것이에요. 안전하다는 판정은 하지 않아요.</p>
+              </section>
+              <h3 class="field-title">이 상황이 맞나요?</h3>
+              <p class="info-box" id="classification-info" role="status"></p>
+              <h3 class="field-title" id="category-label">확인하려는 상황</h3>
+              <div class="tile-grid compact" id="category-pick" role="radiogroup" aria-labelledby="category-label"></div>
+              <h3 class="field-title" id="service-label">내가 실제 이용한 서비스·상황</h3>
+              <div class="chip-row" id="service-pick" role="radiogroup" aria-labelledby="service-label"></div>
+              <p class="hint">문자에 적힌 이름을 그대로 믿지 않고 직접 선택해 주세요.</p>
+              <section class="url-panel" aria-labelledby="urls-heading">
+                <h3 id="urls-heading" class="with-badge"><span class="mini-badge tone-traffic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.6 0l3-3a4 4 0 0 0-5.6-5.6l-1 1"/><path d="M14 10a4 4 0 0 0-5.6 0l-3 3a4 4 0 0 0 5.6 5.6l1-1"/><path d="M4 4l16 16"/></svg></span>문자 속 주소 살펴보기</h3>
+                <p class="hint">https·www·로고만으로 안전을 판단할 수 없어요. 의심 주소는 클릭할 수 없게 표시해요.</p>
+                <div id="url-results" class="url-results"></div>
+              </section>
+              <button class="primary-button" id="show-guide" type="button">내 확인 순서 보기 <span aria-hidden="true">→</span></button>
+            </section>
+
+            <!-- 3단계 -->
+            <section id="step-three" class="tool-step" hidden aria-labelledby="step-three-heading">
+              <button class="back-button" id="back-two" type="button">← 상황 바꾸기</button>
+              <span class="status-label">✓ 확인 경로 준비됨</span>
+              <h2 id="step-three-heading" class="step-title" tabindex="-1">그곳에서 이것만 확인하세요</h2>
+              <p class="lead small">문자에 답하지 않아도 확인할 수 있어요. 공식 서비스에서는 본인 확인이나 로그인이 필요할 수 있어요.</p>
+              <div class="guide-content" id="guide-content"></div>
+              <div class="result-panel">
+                <h3 id="result-heading">직접 확인해 보니 어땠나요?</h3>
+                <div class="result-buttons" id="result-buttons" role="radiogroup" aria-labelledby="result-heading">
+                  <button type="button" role="radio" aria-checked="false" data-result="일치">내용이 일치해요</button>
+                  <button type="button" role="radio" aria-checked="false" data-result="불일치">내용이 달라요</button>
+                  <button type="button" role="radio" aria-checked="true" data-result="미확인" class="selected">아직 모르겠어요</button>
+                </div>
+              </div>
+              <div class="memo-panel">
+                <label for="user-note">확인 메모</label>
+                <p class="hint">원문·전화번호·의심 링크 없이 확인 순서와 직접 기록한 결과만 저장해요.</p>
+                <textarea id="user-note" rows="3" maxlength="500" placeholder="직접 확인한 내용을 짧게 적으세요. 개인정보나 문자 원문은 넣지 마세요."></textarea>
+                <div class="memo-actions">
+                  <button class="secondary-button" id="copy-memo" type="button">메모 복사하기</button>
+                  <button class="secondary-button" id="save-memo" type="button">확인 메모 TXT 저장 ↓</button>
+                </div>
+                <p class="memo-status" id="memo-status" role="status" aria-live="polite"></p>
+              </div>
+            </section>
+          </section>
+          <p class="tool-footnote">이 도구는 사기 여부를 확정 판정하지 않아요. 링크가 안전하다고 보증하지 않으며 외부 검사 API를 사용하지 않아요.</p>
+        </div>
+
+        <aside class="col-side" id="examples" aria-label="예시와 공식 안내">
+          <section class="card paper-card" aria-labelledby="paper-heading">
+            <span class="kicker">논문이 알려 준 것</span>
+            <h2 id="paper-heading">자물쇠(https)와 www는<br>안전 표시가 아니에요</h2>
+            <ul class="paper-facts">
+              <li><b>약 48%</b><span>논문 자료의 피싱 URL 98,703개 중 47,384개가 https였어요.</span></li>
+              <li><b>약 42%</b><span>같은 피싱 URL 중 41,632개가 www.로 시작했어요.</span></li>
+              <li><b>12.37~19.25%p</b><span>https·www를 지우고 다시 학습하자 탐지 모델의 F1이 이만큼 떨어졌어요. 모델 점수도 겉모양에 기대고 있었다는 뜻이에요.</span></li>
+            </ul>
+            <p class="tiny-note">공개 자료 PhiUSIIL 233,553행 기준이며, 실제 웹 전체의 비율은 아니에요. 그래서 이 앱은 점수를 매기지 않고 공식 경로 확인을 안내해요.</p>
+          </section>
+
+          <section class="card" aria-labelledby="examples-heading">
+            <span class="kicker">공식 안내 유형을 바탕으로</span>
+            <h2 id="examples-heading">예시로 먼저 해볼까요?</h2>
+            <div class="sample-list" id="sample-grid"></div>
+            <p class="hint">가상 문자로 확인 흐름을 체험해요. 예시 주소는 예약된 .example을 사용해요.</p>
+          </section>
+
+          <section class="alert-card" aria-labelledby="alert-heading">
+            <span class="alert-kicker">최근 공식 경보</span>
+            <h2 id="alert-heading">내 정보를 알고 있어도,<br>진짜 연락은 아닐 수 있어요.</h2>
+            <p>개인정보 유출을 빌미로 보상·대출을 권유하는 수법에 주의하도록 안내됐어요.</p>
+            <a href="https://www.fsc.go.kr/" target="_blank" rel="noopener noreferrer">금융위원회 공식 사이트 ↗</a>
+            <span class="tiny-note">관련 경보 기준일: 2026.10.06</span>
+          </section>
+
+
+
+          <p class="side-note">안전 점수를 매기는 대신,<br>확인할 다음 행동을 안내해요.</p>
+        </aside>
+
+        <section id="about" class="about" aria-labelledby="about-heading">
+          <span class="kicker">연구에서 생활 속 행동으로</span>
+          <h2 id="about-heading">“의심된다” 다음에 할 일을 만들었어요.</h2>
+          <div class="about-grid">
+            <article><h3>누구를 위한 앱인가요?</h3><p>택배·결제·보안 문자를 받고, 문자 속 링크 대신 어디에서 확인해야 할지 막막한 사람을 위한 도구예요.</p></article>
+            <article><h3>모델이 판단하나요?</h3><p>단어 규칙으로 상황 후보를 찾고 사용자가 수정하는 방식이에요. 학습 모델·LLM·외부 검사 API를 사용하지 않아요.</p></article>
+            <article><h3>개인정보와 한계</h3><p>입력 문자는 브라우저 메모리에서만 처리해요. 서버에 보내거나 자동 저장하지 않고, 새로고침하면 사라져요. TXT 저장은 직접 누를 때만 실행돼요.</p></article>
+            <article><h3>기반 연구</h3><p>이예은(2026), 「피싱 URL 탐지에서 도메인 중복과 scheme·www 단서의 평가 영향」. 공개 자료 PhiUSIIL에서 정상 URL은 모두 https·www였지만 피싱 URL도 약 48%가 https, 약 42%가 www.로 시작했고, 두 단서를 지우자 탐지 모델 F1이 12.37~19.25%p 떨어졌어요. 이 결과를 바탕으로 주소 겉모양이나 점수로 안전을 판단하지 않고 공식 경로 확인을 안내하도록 만들었어요.</p></article>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>진짜예요? · 이예은</span>
+          <span>읽고, 따로 확인하고, 기록하기.</span>
+          <button class="link-quiet" type="button" id="reset-bottom">입력 내용 지우기 ↺</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <!-- 하단 탭 (모바일) -->
+  <nav class="tabbar" aria-label="하단 탭">
+    <a href="#check" class="tab-current" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>문자 확인</a>
+    <a href="#examples"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M9 11h6M9 15h4"/></svg>사례와 근거</a>
+    <a href="#about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>이 도구에 관해</a>
+  </nav>
+
+  <!-- 긴급 대응 -->
+  <dialog id="emergency-dialog" aria-labelledby="emergency-title">
+    <div class="sheet">
+      <span class="sheet-handle" aria-hidden="true"></span>
+      <div class="sheet-top"><span class="kicker">긴급 대응</span><button id="close-dialog" class="pill-button" type="button">✕ 닫기</button></div>
+      <h2 id="emergency-title">지금 어디까지 했나요?</h2>
+      <p class="lead small">괜찮아요, 차근차근 해요. 상황에 맞는 공식 대응 경로를 알려 드릴게요.</p>
+      <div class="em-options" id="emergency-type" role="radiogroup" aria-label="내 상황">
+        <button type="button" role="radio" aria-checked="true" data-em="clicked" class="selected">링크만 눌렀어요</button>
+        <button type="button" role="radio" aria-checked="false" data-em="credential">비밀번호·인증번호를 입력했어요</button>
+        <button type="button" role="radio" aria-checked="false" data-em="installed">앱·프로그램을 설치했어요</button>
+        <button type="button" role="radio" aria-checked="false" data-em="paid">송금하거나 결제했어요</button>
+      </div>
+      <div id="emergency-instructions" class="emergency-instructions" role="status"></div>
+      <a class="primary-button" href="https://www.counterscam112.go.kr/" target="_blank" rel="noopener noreferrer">피싱안심SOS 공식 안내 ↗</a>
+      <p class="hint">전화·로그인·신고 등은 자동 실행되지 않아요. 실제 피해가 의심되면 지체 없이 관련 금융기관·수사기관의 공식 창구를 이용하세요.</p>
+    </div>
+  </dialog>
+</body>
+</html>
